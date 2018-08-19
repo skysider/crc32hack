@@ -341,7 +341,8 @@ def reverse_callback():
         checksum = calc(patch, accum)
         out('verification checksum: 0x{0:08x} ({1})'.format(
             checksum, 'OK' if checksum == desired else 'ERROR'))
-        out('{}{}{}{}'.format(*map(chr, patch)))
+        if all(p in permitted_characters for p in patch):
+            out('{}{}{}{}'.format(*map(chr, patch)))
     # 5-byte alphanumeric patches
     out('\nalternative 5 bytes:')
     for i in permitted_characters:
