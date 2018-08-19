@@ -23,9 +23,10 @@
 import argparse
 import os
 import sys
+import string
 
 permitted_characters = set(
-    map(ord, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890_'))  # \w
+    map(ord, string.digits+string.letters+"_"))  # \w
 
 testing = False
 
@@ -340,7 +341,19 @@ def reverse_callback():
         checksum = calc(patch, accum)
         out('verification checksum: 0x{0:08x} ({1})'.format(
             checksum, 'OK' if checksum == desired else 'ERROR'))
+        out('{}{}{}{}'.format(*map(chr, patch)))
+    # 5-byte alphanumeric patches
+    out('\nalternative 5 bytes:')
+    for i in permitted_characters:
+        patch = [i, ]
+        patches = findReverse(desired, calc(patch, accum))
+        for last_4_bytes in patches:
+            if all(p in permitted_characters for p in last_4_bytes):
+                patch.extend(last_4_bytes)
+                out('alternative: {1}{2}{3}{4}{5} ({0})'.format(
+                    'OK' if calc(patch, accum) == desired else 'ERROR', *map(chr, patch)))
     # 6-byte alphanumeric patches
+    out('\nalternative 6 bytes: ')
     for i in permitted_characters:
         for j in permitted_characters:
             patch = [i, j]
