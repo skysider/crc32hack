@@ -33,3 +33,54 @@ positional arguments:
 optional arguments:
   -h, --help  show this help message and exit
 ```
+
+## Example
+
+```python
+(pwn) ➜  python crc32.py reverse 0x201472db
+4 bytes: {0x66, 0x31, 0x41, 0x67}
+verification checksum: 0x201472db (OK)
+f1Ag
+
+alternative 5 bytes:
+
+alternative 6 bytes:
+alternative: 7gVwIe (OK)
+alternative: 9hIGuk (OK)
+alternative: Fz8Sk0 (OK)
+alternative: QoE35X (OK)
+alternative: Y411Ul (OK)
+alternative: YeSP9p (OK)
+alternative: _18beJ (OK)
+alternative: bmY7PB (OK)
+alternative: cqWZJO (OK)
+alternative: fTUz9y (OK)
+alternative: p1UZyX (OK)
+alternative: uYzGgf (OK)
+    
+
+(pwn) ➜  python crc32.py reverse 0x38f7bcc6
+4 bytes: {0xd1, 0x6a, 0xb4, 0x29}
+verification checksum: 0x38f7bcc6 (OK)
+
+alternative 5 bytes:
+alternative: f1Ag_ (OK)
+
+alternative 6 bytes:
+alternative: 5VYNTH (OK)
+alternative: AOkZlg (OK)
+alternative: CsnD5z (OK)
+alternative: FVldFL (OK)
+alternative: HYsTzB (OK)
+alternative: RBDg2x (OK)
+alternative: WgFGAN (OK)
+alternative: b11qxn (OK)
+alternative: gEQ0gD (OK)
+alternative: msBM2q (OK)
+alternative: oOGSkl (OK)
+alternative: qq3qKy (OK)
+alternative: tT1Q8O (OK)
+alternative: vh4OaR (OK)
+alternative: ygjNFE (OK)
+```
+
